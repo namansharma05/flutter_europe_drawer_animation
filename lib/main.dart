@@ -88,12 +88,63 @@ class _HomePageState extends State<HomePage>
 }
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({super.key});
+  MyDrawer({super.key});
+
+  final List<Map<IconData, String>> drawerItems = [
+    {Icons.info: "News"},
+    {Icons.star: "Favourites"},
+    {Icons.map: "Map"},
+    {Icons.settings: "Settings"},
+    {Icons.person: "Profile"},
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blue,
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          height: double.infinity,
+          width: double.infinity,
+          color: Colors.blue,
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Flutter',
+                  style: TextStyle(fontSize: 50, color: Colors.white),
+                ),
+                Text(
+                  'Europe',
+                  style: TextStyle(
+                      fontSize: 50,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                ),
+                Column(
+                  children: drawerItems.map((entry) {
+                    final key = entry.entries.first.key;
+                    final value = entry.entries.first.value;
+                    return ListTile(
+                      leading: Icon(
+                        key,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        value,
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
