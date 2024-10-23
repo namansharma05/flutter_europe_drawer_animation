@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rive/rive.dart';
 
 void main() {
   runApp(const MyApp());
@@ -178,6 +179,17 @@ class _MyChildState extends State<MyChild> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Container(
+              height: MediaQuery.of(context).size.height * 0.4,
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: RiveAnimation.network(
+                'https://cdn.rive.app/animations/vehicles.riv',
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
             const Text(
               'You have pushed the button this many times:',
             ),
